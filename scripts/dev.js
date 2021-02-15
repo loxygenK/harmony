@@ -61,6 +61,8 @@ function spawnProcess(tag, app, args) {
   process.on("close", () => log(tag + ":SPW", "Closed!"));
 }
 
+log("Dev.js", "Starting TSM in watch mode.")
+spawnProcess("TSM", "yarn", ["css:watch"]);
 log("Dev.js", "Starting development server.");
 spawnProcess("dev.Serv", "yarn", ["devServer"]);
 setTimeout(() => {

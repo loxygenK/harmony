@@ -7,12 +7,17 @@
   "author": "loxygenk <loxygen.k@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/fibers": "^3.1.0",
     "@types/html-webpack-plugin": "^3.2.4",
+    "@types/sass": "^1.16.0",
     "babel-loader": "^8.2.2",
     "electron": "^11.2.3",
     "electron-is-dev": "^1.2.0",
     "electron-reload": "^1.5.0",
+    "fibers": "^5.0.0",
     "html-webpack-plugin": "^5.1.0",
+    "sass": "^1.32.7",
+    "typed-scss-modules": "^4.0.0",
     "typescript": "^4.1.5"
   },
   "dependencies": {
@@ -22,8 +27,12 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@types/webpack": "^4.41.26",
+    "css-loader": "^5.0.2",
+    "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
     "ts-loader": "^8.0.17",
     "ts-node": "^9.1.1",
     "webpack": "^5.21.2",
@@ -32,6 +41,9 @@
   },
   "scripts": {
     "dev": "node scripts/dev.js",
-    "devServer": "webpack-cli serve"
+    "devServer": "webpack-cli serve",
+    "css": "tsm 'src/style/**/*.module.scss' -n dashes -e default",
+    "css:once": "yarn css",
+    "css:watch": "yarn css -w"
   }
 }
