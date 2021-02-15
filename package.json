@@ -1,0 +1,9 @@
+{
+  "name": "harmony",
+  "version": "1.0.0",
+  "description": "An unofficial discord client like Tweetdeck, working on Electron.",
+  "main": "index.js",
+  "repository": "https://github.com/loxygenK/harmony",
+  "author": "loxygenk <loxygen.k@gmail.com>",
+  "license": "MIT"
+}
