@@ -35,7 +35,7 @@ const config: webpack.Configuration = {
       inject: "head",
       minify: isProduction
     })
-  ]
+  ],
 }
 
 export default config;

@@ -1,15 +1,23 @@
-const { app, BrowserWindow } = require("electron");
+const {app, BrowserWindow} = require("electron");
+const isDev = require("electron-is-dev");
 
 function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    resizable: false,
     webPreferences: {
       nodeIntegration: true
     }
   });
-
-  win.loadFile("dist/index.html");
+  
+  if (isDev) {
+    console.log("[i] Developing mode - Loading from development server.");
+    console.log("    Use `yarn dev` or `yarn devServer`.");
+    win.loadURL("http://localhost:8080");
+  } else {
+    win.loadFile("dist/index.html");
+  }
 }
 
 app.whenReady().then(createWindow);
