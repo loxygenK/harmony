@@ -1,5 +1,6 @@
 import webpack from "webpack";
 import path from "path";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -9,8 +10,8 @@ const config: webpack.Configuration = {
     app: "./src/index.tsx"
   },
   output: {
-    path: path.resolve(__dirname, "dist", "assets"),
-    filename: "[name].js"
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name]_[contenthash:16].js"
   },
   module: {
     rules: [
@@ -26,7 +27,15 @@ const config: webpack.Configuration = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "src/index.html",
+      scriptLoading: "defer",
+      inject: "head",
+      minify: isProduction
+    })
+  ]
 }
 
 export default config;
