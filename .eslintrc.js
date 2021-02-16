@@ -17,12 +17,18 @@ module.exports = {
             "jsx": true,
         },
         "ecmaVersion": 12,
-        "sourceType": "module"
+        "sourceType": "module",
     },
     "plugins": [
         "react",
         "@typescript-eslint"
     ],
     "rules": {
+    },
+    "settings": {
+        "react": {
+            "pragma": "React",
+            "version": "detect"
+        }
     }
 };
