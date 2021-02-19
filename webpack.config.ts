@@ -61,6 +61,9 @@ const config: webpack.Configuration = {
     extensions: [".tsx", ".ts", ".js"],
     alias: {
       "@": path.resolve(__dirname, "src")
+    },
+    fallback: {
+      "fs": false,
     }
   },
   plugins: [
