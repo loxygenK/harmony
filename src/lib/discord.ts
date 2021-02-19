@@ -8,29 +8,31 @@ const callbacks: { [key: string]: Callback } = {};
 const client: Discord.Client = new Discord.Client();
 
 function handleMessage(msg: Discord.Message) {
-  if(callbacks[msg.channel.id]) {
+  if (callbacks[msg.channel.id]) {
     callbacks[msg.channel.id](msg);
   }
 }
 
 export async function login(token: string): Promise<void> {
-  if(isLoggedIn) {
+  if (isLoggedIn) {
     throw Error("Already logged in.");
   }
-  client.on("message", (msg) => { handleMessage(msg) })
+  client.on("message", (msg) => {
+    handleMessage(msg);
+  });
   await client.login(token);
   isLoggedIn = true;
 }
 
 export function onMessage(channelId: string, callback: Callback): void {
-  if(callbacks[channelId]) {
+  if (callbacks[channelId]) {
     throw Error(`The callback for channel id ${channelId} is already registered.`);
   }
   callbacks[channelId] = callback;
 }
 
 export function removeHandler(channelId: string): void {
-  if(!callbacks[channelId]) {
+  if (!callbacks[channelId]) {
     throw Error(`The callback for channel id ${channelId} is not registered.`);
   }
   delete callbacks[channelId];
