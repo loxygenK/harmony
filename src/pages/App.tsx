@@ -1,19 +1,14 @@
 import * as React from "react";
-import styles from "@/style/style.module.scss";
+import { TokenRecepter } from "./Token";
+import { ClientViewer } from "./Client";
 
 export const App: React.FC = () => {
-  const [count, setCount] = React.useState(0);
+  const [isLoggedin, setLoggedIn] = React.useState(false);
+
   return (
     <div>
-      <p>
-        You pushed the button
-        <span className={styles.test}>
-          {" "}
-          {count} time{count == 1 ? "" : "s"}
-        </span>
-        .
-      </p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
+      {!isLoggedin && <TokenRecepter onClientReady={() => setLoggedIn(true)} />}
+      {isLoggedin && <ClientViewer />}
     </div>
   );
 };
